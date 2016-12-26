@@ -4,10 +4,8 @@
 'use strict';
 
 angular.module('mtfin')
-    .controller('MainCtrl', function ($scope) {
-        $scope.awesomeThings = [
-            'HTML5 Boilerplate',
-            'AngularJS',
-            'Karma'
-        ];
+    .controller('MainCtrl', function ($scope, fAuth) {
+        $scope.auth = fAuth;
+        $scope.user = $scope.auth.$getAuth();
+        console.log($scope.auth.$getAuth());
     });

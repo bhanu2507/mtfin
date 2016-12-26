@@ -8,10 +8,23 @@ angular.module('mtfin')
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
-                controller: 'MainCtrl'
+                controller: 'MainCtrl',
+                resolve: {
+                    "currentAuth": ["fAuth", function(fAuth) {
+                        return fAuth.$requireSignIn();
+                    }]
+                }
             })
             .when('/login', {
                 templateUrl: 'views/login.html',
                 controller: 'LoginCtrl'
             })
     }])
+    .run(["$rootScope", "$location", function($rootScope, $location) {
+    $rootScope.$on("$routeChangeError", function(event, next, previous, error) {
+        if (error === "AUTH_REQUIRED") {
+            $location.path("/login");
+        }
+    });
+    }]);
+
