@@ -4,8 +4,13 @@
 'use strict';
 
 angular.module('mtfin')
-    .controller('MainCtrl', function ($scope, fAuth) {
+    .controller('MainCtrl', function ($scope, fAuth, $location) {
         $scope.auth = fAuth;
-        $scope.user = $scope.auth.$getAuth();
-        console.log($scope.auth.$getAuth());
+       var user = $scope.auth.$getAuth();
+       // console.log(user.email);
+        $scope.logout = function() {
+            fAuth.$signOut();
+            $location.path('/login');
+        };
+       // console.log($scope.auth.$getAuth());
     });
