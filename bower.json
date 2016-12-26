@@ -1,0 +1,29 @@
+{
+  "name": "mtfin",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "bhanu2507 <bhanureddy@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "index.html",
+  "dependencies": {
+    "angular": "^1.6.1",
+    "bootstrap": "^3.3.7",
+    "angularfire": "^2.2.0",
+    "firebase": "^3.6.4",
+    "jquery": "^3.1.1",
+    "responsive-nav": "^1.0.39",
+    "angular-animate": "^1.6.1",
+    "angular-cookies": "^1.6.1",
+    "angular-resource": "^1.6.1",
+    "angular-route": "^1.6.1",
+    "angular-sanitize": "^1.6.1",
+    "angular-touch": "^1.6.1"
+  },
+  "devDependencies": {
+    "firebase": "^3.6.4",
+    "angularfire": "^2.2.0",
+    "bootstrap": "^3.3.7"
+  }
+}
