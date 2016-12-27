@@ -26,7 +26,7 @@ angular.module('mtfin', [
             authDomain: "mtfin-a2c58.firebaseapp.com",
             databaseURL: "http://mtfin-a2c58.firebaseio.com"
         };
-        firebase.initializeApp(config);
         //var ref = firebase.database().ref();
+        firebase.initializeApp(config);
         return $firebaseAuth(firebase.auth());
     });
