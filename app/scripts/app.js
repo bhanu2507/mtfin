@@ -18,7 +18,8 @@ angular.module('mtfin', [
     'ngRoute',
     'ngSanitize',
     'ngTouch',
-    'firebase'
+    'firebase',
+    'ui.bootstrap'
 ])
     .factory('fAuth', function ($firebaseAuth) {
         var config = {
@@ -29,4 +30,10 @@ angular.module('mtfin', [
         //var ref = firebase.database().ref();
         firebase.initializeApp(config);
         return $firebaseAuth(firebase.auth());
+    })
+    .controller('IndexCtrl', function ($scope, fAuth, $location) {
+        $scope.logout = function() {
+            fAuth.$signOut();
+            $location.path('/login');
+        };
     });

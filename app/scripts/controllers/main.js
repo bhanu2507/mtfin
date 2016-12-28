@@ -25,7 +25,29 @@ angular.module('mtfin')
         $scope.list = function() {
             var ref = firebase.database().ref();
             var list = $firebaseArray(ref);
-            var rec = ref.child("mtfin-a2c58");
-            console.log(rec.length);
+            $scope.data = list;
+            console.log(list);
+        }
+        $scope.getvilla = function(villano) {
+            $scope.corpus1st = "";
+            $scope.roadfund = "";
+            var ref = firebase.database().ref();
+            var list = $firebaseArray(ref);
+console.log(villano);
+           firebase.database().ref('/' + villano).once('value').then(function(snapshot) {
+                var villa = snapshot.val();
+                console.log(villa);
+
+                    $scope.corpus1st = villa.Corpus1st;
+                    $scope.roadfund = villa.RoadFund;
+
+
+              //  console.log(list.$getRecord("135"));
+            });
+        }
+
+        $scope.selected= function(villa){
+            $scope.corpus1st = villa.Corpus1st;
+            $scope.roadfund = villa.RoadFund;
         }
     });

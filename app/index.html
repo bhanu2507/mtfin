@@ -30,7 +30,7 @@
 <!-- Add your site or application content here -->
 
 <!----start-header---->
-<div class="header" ng-cloak="">
+<div class="header" ng-cloak="" ng-controller="IndexCtrl">
 
 
         <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -48,7 +48,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="#!/login">Login</a></li>
                         <li><a href="#!/main">Register</a></li>
-                        <li><a href="#!/config">Config</a></li>
+                        <li><a href="" ng-click="logout();">Logout</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>
@@ -83,7 +83,8 @@
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="bower_components/angular-touch/angular-touch.js"></script>
-
+<script src="bower_components/angular-bootstrap/ui-bootstrap.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 

@@ -1,0 +1,7 @@
+@media screen and (max-width: 360px) {
+    .jumbotron {
+        height: 40px;
+        padding-top: 15%;
+        padding-bottom: 10%;
+    }
+}

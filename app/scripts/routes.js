@@ -11,6 +11,17 @@ angular.module('mtfin')
                 controller: 'MainCtrl',
                 resolve: {
                     "currentAuth": ["fAuth", function(fAuth) {
+                        //console.log(fAuth.$requireSignIn());
+                        return fAuth.$requireSignIn();
+                    }]
+                }
+            })
+            .when('/main', {
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl',
+                resolve: {
+                    "currentAuth": ["fAuth", function(fAuth) {
+                        //console.log(fAuth.$requireSignIn());
                         return fAuth.$requireSignIn();
                     }]
                 }
