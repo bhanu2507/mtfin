@@ -7,10 +7,7 @@
     <a ng-init="tab1()"></a>
     <uib-tabset active="indextab" justified="true">
         <uib-tab index="0" heading="Corpus & Road" ng-click="tab1()">
-            <p align="center">
-                <button role="button" ng-click="add()" class="btn btn-primary btn-lg btn-block">Add</button>
-            </p>
-            <p>
+            <!--p>
                 <button role="button" ng-click="list()" class="btn btn-primary btn-lg btn-block">Get</button>
             </p>
             <div class="container">
@@ -21,22 +18,61 @@
                         <li ng-model="selectedVilla" ng-click="selected(villa)" ng-repeat="villa in data"><a ng-click="dropboxitemselected(villa.$id)">{{ villa.$id }}</a></li>
                     </ul>
                 </div>
-            </div>
-            <p class="form-group">
+            </div-->
+            <p></p>
+            <p class="form-group" align="center">
                 <label>Villa No.</label>
-                <input id="villano" ng-model="villano" name="villano" type="villano" ng-model="villano" />
-                <button role="button" ng-click="getvilla(villano)" class="btn btn-primary">Get Villa</button>
+                <input id="villano" ng-model="villano" name="villano" type="villano" ng-model="villano" ng-change="getvilla(villano)" />
+                <button role="button" ng-click="getvilla(villano)" class="btn btn-primary">Get Details</button>
             </p>
-            <div class="container">
-                <p>Corpus 1st Installment : {{ corpus1st }}</p>
+            <div ng-hide="!loading" align="center">
+                <img src="../img/spinner.gif" height="50" width="50" />
+            </div>
+            <div class="container" ng-hide="!loading1" align="center">
+                <table class="table table-striped">
+                    <thead>
+                    <th>Fund</th>
+                    <th>Amount</th>
+                    </thead>
+                    <tr>
+                        <td>Corpus 1st Installment : </td><td ng-hide="edit"><span style="font-size:8pt;" ng-bind="corpus1st" force-model-update></span></td>
+                        <td ng-hide="!edit"><input type="text" ng-model="corpus1st" /></td>
+                    </tr>
+                    <tr>
+                        <td>Road Fund              : </td><td ng-hide="edit"><span style="font-size:8pt;" ng-bind="roadfund"></span></td>
+                        <td ng-hide="!edit"><input type="text" ng-model="roadfund" /></td>
+                    </tr>
+                    <tr>
+                        <td>Description            : </td><td ng-hide="edit"><span style="font-size:8pt;" ng-bind="desc"></span></td>
+                        <td ng-hide="!edit"><input type="text" ng-model="desc" /></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <button class="btn btn-primary" ng-click="editdtl()" ng-hide="edit">Edit</button>
+                            <button class="btn btn-primary" ng-click="updatedtl(corpus1st, roadfund, desc, villano)" ng-hide="!edit">Update</button>
+                        </td>
+                        <td>
+                            <button class="btn btn-primary" ng-click="canceldtl()" ng-hide="!edit">Cancel</button>
+                        </td>
+                    </tr>
+                </table>
+                <p></p>
+                <p></p>
+            </div>
+            <!--div class="container" ng-hide="!loading1" align="center">
+                <p>Corpus 1st Installment : <input id="villano" ng-model="villano" name="villano" type="villano" ng-model="villano" /> {{ corpus1st }}</p>
                 <p>Road Fund              : {{ roadfund }}</p>
             </div>
+            <p align="center">
+                <button role="button" ng-click="add()" class="btn btn-primary btn-lg btn-block">Add</button>
+            </p-->
         </uib-tab>
         <uib-tab index="1" heading="Maintenance Cash" ng-click="tab2()">
             <p align="center">
                 <button role="button" ng-click="add()" class="btn btn-primary btn-lg btn-block">Maintenance</button>
             </p>
         </uib-tab>
+
     </uib-tabset>
 
 </div>

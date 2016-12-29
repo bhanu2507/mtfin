@@ -22,32 +22,62 @@ angular.module('mtfin')
                 list.$indexFor(id);
             })
         };
+        /*
         $scope.list = function() {
             var ref = firebase.database().ref();
             var list = $firebaseArray(ref);
             $scope.data = list;
             console.log(list);
-        }
+        }*/
         $scope.getvilla = function(villano) {
-            $scope.corpus1st = "";
-            $scope.roadfund = "";
+            $scope.loading = true;
+            $scope.loading1 = false;
+            $scope.corpus1st = null;
+            $scope.roadfund = null;
+            $scope.desc = null;
             var ref = firebase.database().ref();
             var list = $firebaseArray(ref);
-console.log(villano);
            firebase.database().ref('/' + villano).once('value').then(function(snapshot) {
                 var villa = snapshot.val();
-                console.log(villa);
+                //$scope.villalist = snapshot.val();
+               $scope.loading = false;
+               $scope.loading1 = true;
+               $scope.edit = false;
+                //console.log(villa);
 
-                    $scope.corpus1st = villa.Corpus1st;
-                    $scope.roadfund = villa.RoadFund;
-
+                    if (villa != null) {
+                        $scope.corpus1st = villa.Corpus1st;
+                        $scope.roadfund = villa.RoadFund;
+                        $scope.desc = villa.Description;
+                    }
+                    else {
+                        $scope.corpus1st = "";
+                        $scope.roadfund = "";
+                        $scope.desc = "";
+                    }
+               $scope.$apply();
 
               //  console.log(list.$getRecord("135"));
             });
         }
 
-        $scope.selected= function(villa){
-            $scope.corpus1st = villa.Corpus1st;
-            $scope.roadfund = villa.RoadFund;
+
+        $scope.editdtl = function(){
+            $scope.edit = true;
         }
-    });
+        $scope.canceldtl = function(){
+            $scope.edit = false;
+        }
+        $scope.updatedtl = function(cor,rf,ds,vno){
+
+            firebase.database().ref('/' + vno).set({
+                Corpus1st: cor,
+                RoadFund: rf,
+                Description: ds
+            });
+
+            $scope.getvilla(vno);
+        };
+
+
+     });
