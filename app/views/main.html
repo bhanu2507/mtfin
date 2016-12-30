@@ -68,9 +68,35 @@
             </p-->
         </uib-tab>
         <uib-tab index="1" heading="Maintenance Cash" ng-click="tab2()">
-            <p align="center">
-                <button role="button" ng-click="add()" class="btn btn-primary btn-lg btn-block">Maintenance</button>
+            <div ng-hide="!loading2" align="center">
+                <img src="../img/spinner.gif" height="50" width="50" />
+            </div>
+            <p>
+                <span align="center"><h4 align="center">Maintenance Cash : {{ tamt }}</h4></span>
             </p>
+
+            <form role="form" novalidate>
+                <p class="form-group">
+                    <label>Type</label>
+                    <label for="sel1">Select Type:</label>
+                    <select class="form-control" id="sel1" ng-model="type">
+                        <option></option>
+                        <option>cr</option>
+                        <option>db</option>
+                    </select>
+                </p>
+                <p class="form-group">
+                    <label>Description</label>
+                    <input id="desc" required name="desc" type="text" ng-model="desc" class="form-control" />
+                </p>
+                <p class="form-group">
+                    <label>Amount</label>
+                    <input id="amt" required name="amt" type="text" ng-model="amt" class="form-control" />
+                </p>
+                <p align="center">
+                    <button role="button" ng-click="updatemn(type,desc,amt)" class="btn btn-primary btn-lg btn-block">Update</button>
+                </p>
+            </form>
         </uib-tab>
 
     </uib-tabset>
