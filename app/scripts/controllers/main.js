@@ -37,7 +37,7 @@ angular.module('mtfin')
             $scope.desc = null;
             var ref = firebase.database().ref();
             var list = $firebaseArray(ref);
-           firebase.database().ref('/' + villano).once('value').then(function(snapshot) {
+           firebase.database().ref('/corpus/' + villano).once('value').then(function(snapshot) {
                 var villa = snapshot.val();
                 //$scope.villalist = snapshot.val();
                $scope.loading = false;
@@ -62,7 +62,10 @@ angular.module('mtfin')
         }
 
 
-        $scope.editdtl = function(){
+        $scope.editdtl = function(cor, roa, des){
+            $scope.corpus1st1 = cor;
+            $scope.roadfund1 = roa;
+            $scope.desc1 = des;
             $scope.edit = true;
         }
         $scope.canceldtl = function(){
@@ -70,12 +73,14 @@ angular.module('mtfin')
         }
         $scope.updatedtl = function(cor,rf,ds,vno){
 
-            firebase.database().ref('/' + vno).set({
+            firebase.database().ref('/corpus/' + vno).set({
                 Corpus1st: cor,
                 RoadFund: rf,
                 Description: ds
             });
-
+            $scope.corpus1st1 = '';
+            $scope.roadfund1 = '';
+            $scope.desc1 = '';
             $scope.getvilla(vno);
         };
 

@@ -35,21 +35,21 @@
                     <th>Amount</th>
                     </thead>
                     <tr>
-                        <td>Corpus 1st Installment : </td><td ng-hide="edit"><span style="font-size:8pt;" ng-bind="corpus1st" force-model-update></span></td>
-                        <td ng-hide="!edit"><input type="text" ng-model="corpus1st" /></td>
+                        <td>Corpus 1st Installment : </td><td ng-hide="edit"><span style="font-size:8pt;" ng-model="corpus1st">{{ corpus1st }}</span></td>
+                        <td ng-hide="!edit"><input type="text" ng-model="corpus1st1" /></td>
                     </tr>
                     <tr>
-                        <td>Road Fund              : </td><td ng-hide="edit"><span style="font-size:8pt;" ng-bind="roadfund"></span></td>
-                        <td ng-hide="!edit"><input type="text" ng-model="roadfund" /></td>
+                        <td>Road Fund              : </td><td ng-hide="edit"><span style="font-size:8pt;" ng-model="roadfund">{{ roadfund }}</span></td>
+                        <td ng-hide="!edit"><input type="text" ng-model="roadfund1" /></td>
                     </tr>
                     <tr>
-                        <td>Description            : </td><td ng-hide="edit"><span style="font-size:8pt;" ng-bind="desc"></span></td>
-                        <td ng-hide="!edit"><input type="text" ng-model="desc" /></td>
+                        <td>Description            : </td><td ng-hide="edit"><span style="font-size:8pt;" ng-model="desc">{{ desc }}</span></td>
+                        <td ng-hide="!edit"><input type="text" ng-model="desc1" /></td>
                     </tr>
                     <tr>
                         <td>
-                            <button class="btn btn-primary" ng-click="editdtl()" ng-hide="edit">Edit</button>
-                            <button class="btn btn-primary" ng-click="updatedtl(corpus1st, roadfund, desc, villano)" ng-hide="!edit">Update</button>
+                            <button class="btn btn-primary" ng-click="editdtl(corpus1st, roadfund, desc)" ng-hide="edit">Edit</button>
+                            <button class="btn btn-primary" ng-click="updatedtl(corpus1st1, roadfund1, desc1, villano)" ng-hide="!edit">Update</button>
                         </td>
                         <td>
                             <button class="btn btn-primary" ng-click="canceldtl()" ng-hide="!edit">Cancel</button>
